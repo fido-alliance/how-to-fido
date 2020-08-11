@@ -901,7 +901,7 @@ a UVRA</span>](#signing-in-with-a-uvra).
 
 1.  I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
-    information about the user. Typically, account boostrapping results
+    information about the user. Typically, account bootstrapping results
     in the *creation* of saved user state on the user's device, enabling
     the user to later return via lower-friction flows.
 
