@@ -814,7 +814,7 @@ in single-step account bootstrap flows.
 What if the relying party is primarily interested in providing phishing
 resistant account bootstrap flows to its users, but it wants to be
 flexible as to whether this happens through a 2nd step (e.g., using a
-non-user-verfiying security key), or whether this happens through the
+non-user-verifying security key), or whether this happens through the
 use of a UVRA and single-step account bootstrap? Webauthn
 implementations compatible with Level 2 of the webauthn specification
 can support such a scenario. As a result, the relying party can
