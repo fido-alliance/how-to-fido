@@ -2,6 +2,8 @@
 
 _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A guide for relying parties_
 
+*FIDO Alliance, Inc (“FIDO”), the owner of “How to FIDO,” grants you a worldwide royalty-free, non-sublicensable, non-exclusive, irrevocable license to reproduce and to distribute copies of “How to FIDO.” You are not granted the right to make derivative works of “How to FIDO.”*
+
 ## Let’s Define Some Terms  <!-- omit in toc -->
 
 -  **Account Bootstrapping:** “*Bootstrapping* an account on a
