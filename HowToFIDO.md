@@ -389,7 +389,8 @@ as 2nd factors when bootstrapping their account.\[10\]
 
 > **Note:** We <strong><span class="underline">do not recommend</span></strong> 
 > allowing users to register user-verifying platform authenticators as second factors for 
-> account bootstrapping. If you want to give your users the convenience of biometric 
+> account bootstrapping, since it may lead to locking out the users from logging into their accounts if the platform authenticators are lost, stolen or damaged. If such lock out happens, you need to take the users to your account recovery process that may cause frictions with them. 
+> If you want to give your users the convenience of biometric 
 > sign-in, follow <a href="#opting-into-fido-based-reauthentication"><span class="underline">the
 > steps above</span></a> to register a user-verifying platform authenticator as a password
 > replacement for **reauthentication**, **not** as a second factor
