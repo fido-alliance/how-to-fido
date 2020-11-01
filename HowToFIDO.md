@@ -243,7 +243,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: Please see [18].
+> A note on attestation: Please see [16].
 
 
 Associate the returned public key and credential id with the user
@@ -444,7 +444,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: Please see [18].
+> A note on attestation: Please see [16].
 
 It is common practice to let the user name the authenticator (either
 before or after you call `create()`), and to show the user a list of
@@ -594,7 +594,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: Please see [18].
+> A note on attestation: Please see [16].
 
 
 You should let the user name the authenticator (either before or after
@@ -670,7 +670,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: Please see [18].
+> A note on attestation: Please see [16].
 
 If the transports indicated in the response include "ble" and/or
 "cable", you know that the present device can be used as a UVRA.
@@ -867,7 +867,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: Please see [18].
+> A note on attestation: Please see [16].
 
 Depending on whether a resident/discoverable credential was in fact
 created, and whether the authenticator response indicates support for
@@ -957,7 +957,7 @@ a UVRA</span>](#signing-in-with-a-uvra).
     and CTAP2.1 specs.
 
 
-18.  A note on attestation: Whether or not to specify the attestation 
+16.  A note on attestation: Whether or not to specify the attestation 
      conveyance parameter `attestation`depends on your business priorities.
      If attestation is not specified, you will not get the AAGUID 
      (Authenticator Attestation GUID) of the authenticator and you will not
