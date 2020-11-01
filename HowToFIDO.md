@@ -16,8 +16,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
      Note that this is *different* from creating an account with a
      service in the first place.
 
--  **Reauthentication** happens when a relying party already knows
-     who the user is, but would like to reconfirm this. For example,
+-  **Reauthentication** is a generic term widely used for reconfirming authentication of the user when the user is already known or authenticated. For example,
      this happens before making sensitive changes to an account (add a
      recovery email address, change the passwords, etc.): a relying
      party would typically ask the user to re-enter their password or
