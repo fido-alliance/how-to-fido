@@ -755,7 +755,7 @@ A concern around the use of FIDO authenticators is device loss: what
 happens when a user loses their FIDO authenticator? How will they be
 able to get back into (i.e., “recover”) their account? **Our general
 recommendation is to encourage the user to register a *second*
-authenticator as backup**, but there are a few caveats to consider:
+authenticator as backup** [16] [17], but there are a few caveats to consider:
 
   - If a user's *only* registered authenticator is a *platform*
     authenticator that is used ***only*** for
@@ -977,3 +977,8 @@ a UVRA</span>](#signing-in-with-a-uvra).
 15. Historically, we used the term "resident key" to refer to what will
     be known as "discoverable credentials" in the upcoming WebAuthn L2
     and CTAP2.1 specs.
+
+16. Recommended Account Recovery Practices for FIDO Relying Parties, https://fidoalliance.org/recommended-account-recovery-practices/
+
+17. White Paper: Multiple Authenticators for Reducing Account-Recovery Needs for FIDO-Enabled Consumer Accounts, https://fidoalliance.org/white-paper-multiple-authenticators-for-reducing-account-recovery-needs-for-fido-enabled-consumer-accounts/
+
