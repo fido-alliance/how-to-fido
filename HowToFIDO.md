@@ -231,10 +231,13 @@ navigator.credentials.create({
     rp: {...},
     user: {...},
     challenge: ...,
-    pubKeyCredParams: {
+    pubKeyCredParams: [{
       type: "public-key",
       alg: -7
-    },
+    }, {
+      type: "public-key",
+      alg: -257
+    }],
     authenticatorSelection: {
       authenticatorAttachment: "platform", // !!!
       userVerification: "required"         // !!!
@@ -252,10 +255,10 @@ navigator.credentials.create({
 > canceling the creation).
 
 Associate the returned public key and credential id with the user
-account. Also, make sure you associate the credential id **with the
-device** the user just authenticated from. For example, store the
-credential id in a cookie (or associate it with a cookie), or store the
-credential id in local storage.
+account on the server. Also, make sure you associate this credential id as `2FACapableFidoCredential` and store all the transports applicable for this credential on the server. Associate a `2FACapableFIDOCredsAvailable` flag **with the
+user account** locally. For example, store the
+`2FACapableFIDOCredsAvailable` flag in a cookie (or associate it with a cookie), or store the
+`2FACapableFIDOCredsAvailable` flag in local storage. **Don't store the actual credential id locally**. Use `2FACapableFIDOCredsAvailable` flag instead of actual credential id which helps in cross-browser scenarios.
 
 ## 3 Performing FIDO-based Reauthentication
 
@@ -270,26 +273,26 @@ Reauthentication might happen for the following reasons:
     re-confirm control over the user session.
 
 Let’s look at the last case first: when it’s time to re-authenticate for
-a sensitive action, check whether you have a credential id for this user
-*for the purpose of reauthentication*, i.e., the kind of credential id
-obtained from [<span class="underline">opting the user into FIDO-based
-reauthentication</span>](#opting-into-fido-based-reauthentication). Make
-sure it’s associated with the user *and* device - for example, check a
-cookie or read from local storage.
+a sensitive action, check whether you have a `2FACapableFIDOCredsAvailable` flag for this user
+*for the purpose of reauthentication*.
 
-If *no credential id is available*, serve a traditional login challenge
+If *no `2FACapableFIDOCredsAvailable` flag is available*, serve a traditional login challenge
 suitable for reauthentication\[8\], for example:
 
 ![password reauthentication](images/image15.png)
 
-If, however, you *do* discover a credential id for the current session,
-then you can use FIDO-based reauthentication:
+If, however, you *do* have `2FACapableFIDOCredsAvailable` flag for the current session,
+then you can use FIDO-based reauthentication.
+Fetch all `2FACapableFidoCredential` credentials from the server for this user.
+Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials.
+Prefer using long lived local session key while fetching `2FACapableFidoCredential` credentials from the server.
+Also order the credentials in the reverse order of when credentials are created (latest created credential is first in the list):
 
 ![FIDO reauthentication](images/image2.png)
 
 When the user is ready (in the above example, when they click on the
 “Go\!” button), call `navigator.credentials.get()`, again requiring user
-verification and specifying an “internal” transport:
+verification:
 
 ```javascript
 navigator.credentials.get({
@@ -298,9 +301,14 @@ navigator.credentials.get({
     rpId: ...,
     allowCredentials: [{
       type: “public-key”,
-      id: ..., //!!! use the *one* credential id associated with  
-               //!!! this user/device combination.
-      transports: [“internal”]    //!!!
+      id: ...,        // 2FACapableFidoCredential CredentialID_1
+      transports: ... // Transports associated with CredentialID_1
+    }, {
+      type: “public-key”,
+      id: ...,        // 2FACapableFidoCredential CredentialID_2
+      transports: ... // Transports associated with CredentialID_2
+    }, {
+      ...
     }],
     userVerification: “required”, //!!!
   }
@@ -336,21 +344,24 @@ presumably with a different account. In this case, you should also give
 the user the ability to completely remove their account from being
 listed on the sign-in page.
 
-If the user clicks on “Next”, then check whether you have a credential
-id associated with the user and device (for example, check a cookie or
-read from local storage). If no credential id is available, serve a
+If the user clicks on “Next”, then check whether you have `2FACapableFIDOCredsAvailable` flag associated with the user (for example, check a cookie or
+read from local storage). If no `2FACapableFIDOCredsAvailable` flag is available, serve a
 traditional login challenge suitable for reauthentication, for example:
 
 ![Password-based re-sign-in](images/image3.png)
 
-If, however, you *do* find a credential id for the current session, then
-you can use FIDO-based reauthentication:
+If, however, you *do* have `2FACapableFIDOCredsAvailable` flag for the current session,
+then you can use FIDO-based reauthentication.
+Fetch all `2FACapableFidoCredential` credentials from the server for this user.
+Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials.
+Prefer using long lived local session key while fetching `2FACapableFidoCredential` credentials from the server.
+Also order the credentials in the reverse order of when credentials are created (latest created credential is first in the list):
 
 ![FIDO-based re-sign-in](images/image4.png)
 
 When the user is ready (in the above example, when they click on the
 “Go\!” button), call navigator.credentials.get(), again requiring user
-verification and specifying an “internal” transport:
+verification:
 
 ```javascript
 navigator.credentials.get({
@@ -359,9 +370,14 @@ navigator.credentials.get({
     rpId: ...,
     allowCredentials: [{
       type: “public-key”,
-      id: ..., //!!! use the *one* credential id associated with  
-               //!!! this user/device combination.
-      transports: [“internal”]    //!!!
+      id: ...,        // 2FACapableFidoCredential CredentialID_1
+      transports: ... // Transports associated with CredentialID_1
+    }, {
+      type: “public-key”,
+      id: ...,        // 2FACapableFidoCredential CredentialID_2
+      transports: ... // Transports associated with CredentialID_2
+    }, {
+      ...
     }],
     userVerification: “required”, //!!!
   }
@@ -670,10 +686,13 @@ navigator.credentials.create({
     rp: {...},
     user: {...},
     challenge: ...,
-    pubKeyCredParams: {
+    pubKeyCredParams: [{
       type: "public-key",
       alg: -7
-    },
+    }, {
+      type: "public-key",
+      alg: -257
+    }],
     authenticatorSelection: {
       authenticatorAttachment: "platform", //!!!  
       requireResidentKey: true,            //!!!
