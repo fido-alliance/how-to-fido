@@ -258,7 +258,7 @@ Associate the returned public key and credential id with the user
 account on the server. Also, make sure you associate this credential id as `2FACapableFidoCredential` and store all the transports applicable for this credential on the server. Associate a `2FACapableFIDOCredsAvailable` flag **with the
 user account** locally. For example, store the
 `2FACapableFIDOCredsAvailable` flag in a cookie (or associate it with a cookie), or store the
-`2FACapableFIDOCredsAvailable` flag in local storage. **Don't store the actual credential id locally**. Using `2FACapableFIDOCredsAvailable` flag instead of actual credential id helps cross-browser scenarios.
+`2FACapableFIDOCredsAvailable` flag in local storage. **Don't store the actual credential id locally**. Use `2FACapableFIDOCredsAvailable` flag instead of actual credential id which helps in cross-browser scenarios.
 
 ## 3 Performing FIDO-based Reauthentication
 
@@ -282,7 +282,11 @@ suitable for reauthentication\[8\], for example:
 ![password reauthentication](images/image15.png)
 
 If, however, you *do* have `2FACapableFIDOCredsAvailable` flag for the current session,
-then you can use FIDO-based reauthentication. Fetch all `2FACapableFidoCredential` credentials from the server for this user. Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials:
+then you can use FIDO-based reauthentication.
+Fetch all `2FACapableFidoCredential` credentials from the server for this user.
+Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials.
+Prefer using long lived local session key while fetching `2FACapableFidoCredential` credentials from the server.
+Also order the credentials in the reverse order of when credentials are created (latest created credential is first in the list):
 
 ![FIDO reauthentication](images/image2.png)
 
@@ -347,7 +351,11 @@ traditional login challenge suitable for reauthentication, for example:
 ![Password-based re-sign-in](images/image3.png)
 
 If, however, you *do* have `2FACapableFIDOCredsAvailable` flag for the current session,
-then you can use FIDO-based reauthentication. Fetch all `2FACapableFidoCredential` credentials from the server for this user. Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials:
+then you can use FIDO-based reauthentication.
+Fetch all `2FACapableFidoCredential` credentials from the server for this user.
+Don't fetch non `2FACapableFidoCredential` credentials like U2F credentials.
+Prefer using long lived local session key while fetching `2FACapableFidoCredential` credentials from the server.
+Also order the credentials in the reverse order of when credentials are created (latest created credential is first in the list):
 
 ![FIDO-based re-sign-in](images/image4.png)
 
