@@ -333,7 +333,7 @@ an account bootstrap flow as explained above, repeating the steps in
 [<span class="underline">Authenticating the
 User</span>](#21-authenticating-the-user) and
 [<span class="underline">Opting into FIDO-based
-Reauthentication</span>](#opting-into-fido-based-reauthentication),
+Reauthentication</span>](#22-opting-into-fido-based-reauthentication),
 presumably with a different account. In this case, you should also give
 the user the ability to completely remove their account from being
 listed on the sign-in page.
@@ -392,7 +392,7 @@ as 2nd factors when bootstrapping their account.\[10\]
 > **Note:** We <strong><span class="underline">do not recommend</span></strong> 
 > allowing users to register user-verifying platform authenticators as second factors for 
 > account bootstrapping. If you want to give your users the convenience of biometric 
-> sign-in, follow <a href="#opting-into-fido-based-reauthentication"><span class="underline">the
+> sign-in, follow <a href="#22-opting-into-fido-based-reauthentication"><span class="underline">the
 > steps above</span></a> to register a user-verifying platform authenticator as a password
 > replacement for **reauthentication**, **not** as a second factor
 > for account bootstrapping.<br />
@@ -762,10 +762,10 @@ authenticator as backup**, but there are a few caveats to consider:
   - If a user's *only* registered authenticator is a *platform*
     authenticator that is used ***only*** for
     [<span class="underline">FIDO-based
-    reauthentication</span>](#performing-fido-based-reauthentication),
+    reauthentication</span>](#3-performing-fido-based-reauthentication),
     then the user presumably has some other means to perform
     [<span class="underline">bootstrap
-    sign-ins</span>](#bootstrapping-an-account). Thus, the user does
+    sign-ins</span>](#2-bootstrapping-an-account). Thus, the user does
     not *necessarily* need to register a second authenticator, because
     the user will not be "locked out" of their account if they lose
     access to their platform authenticator. By definition, this
@@ -899,7 +899,7 @@ user verification, the relying party can afterwards let the user know
 what experience they should expect during subsequent account bootstraps,
 for example by telling them that they can use the “Sign in without a
 password” feature mentioned in [<span class="underline">Signing in with
-a UVRA</span>](#signing-in-with-a-uvra).
+a UVRA</span>](#53-signing-in-with-a-uvra).
 
 1.  I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
@@ -935,7 +935,7 @@ a UVRA</span>](#signing-in-with-a-uvra).
 
 6.  Although there are options to skip this step, which themselves use
     FIDO/webauthn APIs and UVRAs. We’ll discuss those
-    [<span class="underline">below</span>](#signing-in-with-a-uvra).
+    [<span class="underline">below</span>](53-signing-in-with-a-uvra).
 
 7.  Although there are exceptions: for example, in an enterprise
     context, users may not be able to create accounts themselves, and
@@ -951,9 +951,9 @@ a UVRA</span>](#signing-in-with-a-uvra).
     credential id (if it has any). Such a relying party ought to treat a
     subsequent sign-in like an account bootstrap, and repeat the steps
     explained above in [<span class="underline">Authenticating the
-    User</span>](#authenticating-the-user) and
+    User</span>](#21-authenticating-the-user) and
     [<span class="underline">Opting into FIDO-based
-    Reauthentication</span>](#opting-into-fido-based-reauthentication)
+    Reauthentication</span>](#22-opting-into-fido-based-reauthentication)
     at the time of the next sign-in.
 
 10. We’ll discuss the use of user-verifying roaming authenticators for
@@ -970,7 +970,7 @@ a UVRA</span>](#signing-in-with-a-uvra).
 
 13. There are ways to skip this step, which themselves use FIDO/webauthn
     APIs. We’ll discuss those
-    [<span class="underline">below</span>](#signing-in-with-a-uvra).
+    [<span class="underline">below</span>](53-signing-in-with-a-uvra).
 
 14. Though, depending upon the type of authenticator, they may need to
     provide a PIN (which is locally processed by the platform OS and
