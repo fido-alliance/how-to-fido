@@ -331,7 +331,7 @@ same time.)
 If the user clicks on “Use a different account”, then you should enter
 an account bootstrap flow as explained above, repeating the steps in
 [<span class="underline">Authenticating the
-User</span>](#authenticating-the-user) and
+User</span>](#21-authenticating-the-user) and
 [<span class="underline">Opting into FIDO-based
 Reauthentication</span>](#opting-into-fido-based-reauthentication),
 presumably with a different account. In this case, you should also give
