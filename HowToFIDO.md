@@ -1,3 +1,5 @@
+<!-- this is github-flavored Markdown -- see: https://github.github.com/gfm/  -->
+
 # How to FIDO  <!-- omit in toc -->
 
 _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A guide for relying parties_
@@ -273,7 +275,7 @@ Let’s look at the last case first: when it’s time to re-authenticate for
 a sensitive action, check whether you have a credential id for this user
 *for the purpose of reauthentication*, i.e., the kind of credential id
 obtained from [<span class="underline">opting the user into FIDO-based
-reauthentication</span>](#opting-into-fido-based-reauthentication). Make
+reauthentication</span>](#22-opting-into-fido-based-reauthentication). Make
 sure it’s associated with the user *and* device - for example, check a
 cookie or read from local storage.
 
