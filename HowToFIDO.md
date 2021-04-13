@@ -141,7 +141,7 @@ the different types of authenticators:
 <p>phishing-resistant 2nd factor</p>
 </li>
 <li>
-<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em>[[3]](#footnote-3)</p>
+<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em><a href=#footnote-3>[3]</a></p>
 </li>
 </ul></td>
 </tr>
