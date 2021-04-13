@@ -8,7 +8,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
 
 -  **Account Bootstrapping:** “*Bootstrapping* an account on a
      device”, or “bootstrap sign-in”.  
-     Starting from scratch[\[1\]][#footnote-1], a relying party authenticates a user.
+     Starting from scratch [\[1\]][#footnote-1], a relying party authenticates a user.
      For example, this happens when a user puts their existing account
      on a newly-purchased phone. Or when a user logs into a website for
      the first time in a given browser instance. Or when a user logs
@@ -902,7 +902,7 @@ for example by telling them that they can use the “Sign in without a
 password” feature mentioned in [Signing in with
 a UVRA](#53-signing-in-with-a-uvra).
 
-[1.]#footnote-1  I.e., without any saved user state or credentials, e.g., cookies or
+[\[1\]]#footnote-1  I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
     information about the user. Typically, account bootstrapping results
     in the *creation* of saved user state on the user's device, enabling
