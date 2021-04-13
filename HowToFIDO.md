@@ -274,8 +274,8 @@ Reauthentication might happen for the following reasons:
 Let’s look at the last case first: when it’s time to re-authenticate for
 a sensitive action, check whether you have a credential id for this user
 *for the purpose of reauthentication*, i.e., the kind of credential id
-obtained from [<span class="underline">opting the user into FIDO-based
-reauthentication</span>](#22-opting-into-fido-based-reauthentication). Make
+obtained from [opting the user into FIDO-based
+reauthentication](#22-opting-into-fido-based-reauthentication). Make
 sure it’s associated with the user *and* device - for example, check a
 cookie or read from local storage.
 
@@ -323,14 +323,14 @@ serve a sign-in page like this:
 ![Re-sign-in](images/image12.png)
 
 (An alternative UI treatment here could be an
-[<span class="underline">account chooser-style
-UI</span>](https://www.accountchooser.com/learnmore.html), especially
+[account chooser-style
+UI](https://www.accountchooser.com/learnmore.html), especially
 when the relying party allows multiple accounts to be signed-in at the
 same time.)
 
 If the user clicks on “Use a different account”, then you should enter
-an account bootstrap flow as explained above, repeating the steps in <!-- [<span class="underline">Authenticating the
-User</span>](#21-authenticating-the-user) -->
+an account bootstrap flow as explained above, repeating the steps in <!-- [Authenticating the
+User](#21-authenticating-the-user) -->
 [Authenticating the
 User](#21-authenticating-the-user) and
 [Opting into FIDO-based
@@ -514,9 +514,9 @@ like in Chrome on Linux:
 
 Upon touching their authenticator, you will receive a
 PublicKeyCredential object containing a
-[<span class="underline">AuthenticatorAssertionResponse</span>](https://www.w3.org/TR/webauthn/#authenticatorassertionresponse)
+[AuthenticatorAssertionResponse](https://www.w3.org/TR/webauthn/#authenticatorassertionresponse)
 **which you need to successfully
-[<span class="underline">verify</span>](https://www.w3.org/TR/webauthn/#verifying-assertion)**
+[verify](https://www.w3.org/TR/webauthn/#verifying-assertion)**
 before considering the user authenticated and signed-in.
 
 ## 5 User-Verifying Roaming Authenticators (UVRAs)
@@ -762,11 +762,11 @@ authenticator as backup**, but there are a few caveats to consider:
 
   - If a user's *only* registered authenticator is a *platform*
     authenticator that is used ***only*** for
-    [<span class="underline">FIDO-based
-    reauthentication</span>](#3-performing-fido-based-reauthentication),
+    [FIDO-based
+    reauthentication](#3-performing-fido-based-reauthentication),
     then the user presumably has some other means to perform
-    [<span class="underline">bootstrap
-    sign-ins</span>](#2-bootstrapping-an-account). Thus, the user does
+    [bootstrap
+    sign-ins](#2-bootstrapping-an-account). Thus, the user does
     not *necessarily* need to register a second authenticator, because
     the user will not be "locked out" of their account if they lose
     access to their platform authenticator. By definition, this
@@ -846,8 +846,8 @@ To achieve this, the relying party will not require user verification or
 a resident/discoverable credential during credential creation. Instead,
 you will set these to best-effort, or “preferred” mode (a feature only
 available in Level 2 of the webauthn specification). Note that you also
-need to set the [<span class="underline">credProps
-extension</span>](https://www.w3.org/TR/webauthn-2/#sctn-authenticator-credential-properties-extension)
+need to set the [credProps
+extension](https://www.w3.org/TR/webauthn-2/#sctn-authenticator-credential-properties-extension)
 parameter to find out whether or not a resident/discoverable credential
 was created.
 
@@ -899,8 +899,8 @@ created, and whether the authenticator response indicates support for
 user verification, the relying party can afterwards let the user know
 what experience they should expect during subsequent account bootstraps,
 for example by telling them that they can use the “Sign in without a
-password” feature mentioned in [<span class="underline">Signing in with
-a UVRA</span>](#53-signing-in-with-a-uvra).
+password” feature mentioned in [Signing in with
+a UVRA](#53-signing-in-with-a-uvra).
 
 1.  I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
@@ -936,7 +936,7 @@ a UVRA</span>](#53-signing-in-with-a-uvra).
 
 6.  Although there are options to skip this step, which themselves use
     FIDO/webauthn APIs and UVRAs. We’ll discuss those
-    [<span class="underline">below</span>](53-signing-in-with-a-uvra).
+    [below](53-signing-in-with-a-uvra).
 
 7.  Although there are exceptions: for example, in an enterprise
     context, users may not be able to create accounts themselves, and
@@ -951,10 +951,10 @@ a UVRA</span>](#53-signing-in-with-a-uvra).
     comprehensive action and thus delete all references to the user’s
     credential id (if it has any). Such a relying party ought to treat a
     subsequent sign-in like an account bootstrap, and repeat the steps
-    explained above in [<span class="underline">Authenticating the
-    User</span>](#21-authenticating-the-user) and
-    [<span class="underline">Opting into FIDO-based
-    Reauthentication</span>](#22-opting-into-fido-based-reauthentication)
+    explained above in [Authenticating the
+    User](#21-authenticating-the-user) and
+    [Opting into FIDO-based
+    Reauthentication](#22-opting-into-fido-based-reauthentication)
     at the time of the next sign-in.
 
 10. We’ll discuss the use of user-verifying roaming authenticators for
@@ -971,7 +971,7 @@ a UVRA</span>](#53-signing-in-with-a-uvra).
 
 13. There are ways to skip this step, which themselves use FIDO/webauthn
     APIs. We’ll discuss those
-    [<span class="underline">below</span>](53-signing-in-with-a-uvra).
+    [below](53-signing-in-with-a-uvra).
 
 14. Though, depending upon the type of authenticator, they may need to
     provide a PIN (which is locally processed by the platform OS and
