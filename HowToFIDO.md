@@ -8,7 +8,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
 
 -  **Account Bootstrapping:** “*Bootstrapping* an account on a
      device”, or “bootstrap sign-in”.  
-     Starting from scratch [1]:#footnote-1, a relying party authenticates a user.
+     Starting from scratch [[1]](#footnote-1), a relying party authenticates a user.
      For example, this happens when a user puts their existing account
      on a newly-purchased phone. Or when a user logs into a website for
      the first time in a given browser instance. Or when a user logs
