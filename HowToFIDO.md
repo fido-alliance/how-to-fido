@@ -333,8 +333,8 @@ an account bootstrap flow as explained above, repeating the steps in <!-- [<span
 User</span>](#21-authenticating-the-user) -->
 [Authenticating the
 User](#21-authenticating-the-user) and
-[<span class="underline">Opting into FIDO-based
-Reauthentication</span>](#22-opting-into-fido-based-reauthentication),
+[Opting into FIDO-based
+Reauthentication](#22-opting-into-fido-based-reauthentication),
 presumably with a different account. In this case, you should also give
 the user the ability to completely remove their account from being
 listed on the sign-in page.
