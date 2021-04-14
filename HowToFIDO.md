@@ -98,6 +98,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
 - [6 Account Recovery / Device Loss](#6-account-recovery--device-loss)
 - [7 Appendix: More Complex Use Cases](#7-appendix-more-complex-use-cases)
   - [7.1 Phishing-Resistant Account Bootstrapping with Optional Passwordless Sign-In](#71-phishing-resistant-account-bootstrapping-with-optional-passwordless-sign-in)
+- [8 Footnotes](#8-footnotes)
 
 ## 1 Overview
 
@@ -901,6 +902,8 @@ what experience they should expect during subsequent account bootstraps,
 for example by telling them that they can use the “Sign in without a
 password” feature mentioned in [Signing in with
 a UVRA](#53-signing-in-with-a-uvra).
+
+## 8 Footnotes
 
 1.  <span id="footnote-1"/>I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
