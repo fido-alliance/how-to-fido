@@ -1,3 +1,5 @@
+<!-- this is github-flavored Markdown -- see: https://github.github.com/gfm/  -->
+
 # How to FIDO  <!-- omit in toc -->
 
 _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A guide for relying parties_
@@ -6,7 +8,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
 
 -  **Account Bootstrapping:** “*Bootstrapping* an account on a
      device”, or “bootstrap sign-in”.  
-     Starting from scratch\[1\], a relying party authenticates a user.
+     Starting from scratch [[1]](#footnote-1), a relying party authenticates a user.
      For example, this happens when a user puts their existing account
      on a newly-purchased phone. Or when a user logs into a website for
      the first time in a given browser instance. Or when a user logs
@@ -74,7 +76,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
      *built-into* a user's device.
 
 -  **UVRA:** **User-verifying roaming authenticator**. UVRAs can
-     *verify*\[2\] individual users through the use of biometrics, or
+     *verify* [[2]](#footnote-2) individual users through the use of biometrics, or
      through the user typing a PIN or password, etc. An important class
      of UVRAs are *smartphones*, in which case the “attachment”
      typically happens over a wireless connection.
@@ -96,6 +98,7 @@ _Employing FIDO authenticators and the WebAuthn API in your sign-in flows: A gui
 - [6 Account Recovery / Device Loss](#6-account-recovery--device-loss)
 - [7 Appendix: More Complex Use Cases](#7-appendix-more-complex-use-cases)
   - [7.1 Phishing-Resistant Account Bootstrapping with Optional Passwordless Sign-In](#71-phishing-resistant-account-bootstrapping-with-optional-passwordless-sign-in)
+- [8 Footnotes](#8-footnotes)
 
 ## 1 Overview
 
@@ -139,7 +142,7 @@ the different types of authenticators:
 <p>phishing-resistant 2nd factor</p>
 </li>
 <li>
-<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em>[3]</p>
+<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em> <a href=#footnote-3>[3]</a></p>
 </li>
 </ul></td>
 </tr>
@@ -147,7 +150,7 @@ the different types of authenticators:
 <td>Not-user-verifying</td>
 <td><ul>
 <li>
-<p>defense-in-depth against malware[4]</p>
+<p>defense-in-depth against malware <a href=#footnote-4>[4]</a></p>
 </li>
 </ul></td>
 <td><ul>
@@ -155,7 +158,7 @@ the different types of authenticators:
 <p>phishing-resistant 2nd factor</p>
 </li>
 <li>
-<p>low-security single-step account bootstrapping[5]</p>
+<p>low-security single-step account bootstrapping <a href=#footnote-5>[5]</a></p>
 </li>
 </ul></td>
 </tr>
@@ -178,7 +181,7 @@ the user already has an existing account with the relying party.
 
 To bootstrap an account on a device, serve the user a sign-in page.
 Typically you would start off by asking the user for their account
-identifier (username)\[6\]:
+identifier (username) [[6]](#footnote-6):
 
 ![Username challenge](images/image6.png)
 
@@ -193,7 +196,7 @@ considered *authenticated* and *signed in*.
 
 What happens when the user doesn’t already have an account with the
 relying party? Usually, you will give users the option on the sign-in
-page to create an account\[7\]. If the user chooses that option, collect
+page to create an account [[7]](#footnote-7). If the user chooses that option, collect
 the necessary information from the user to open a new account. If the
 user successfully opens a new account, they’re also considered
 authenticated and sign-in.
@@ -272,13 +275,13 @@ Reauthentication might happen for the following reasons:
 Let’s look at the last case first: when it’s time to re-authenticate for
 a sensitive action, check whether you have a credential id for this user
 *for the purpose of reauthentication*, i.e., the kind of credential id
-obtained from [<span class="underline">opting the user into FIDO-based
-reauthentication</span>](#opting-into-fido-based-reauthentication). Make
+obtained from [opting the user into FIDO-based
+reauthentication](#22-opting-into-fido-based-reauthentication). Make
 sure it’s associated with the user *and* device - for example, check a
 cookie or read from local storage.
 
 If *no credential id is available*, serve a traditional login challenge
-suitable for reauthentication\[8\], for example:
+suitable for reauthentication [[8]](#footnote-8), for example:
 
 ![password reauthentication](images/image15.png)
 
@@ -314,24 +317,25 @@ Now let’s look at the case where the reauthentication is triggered
 because the user logged themselves out, or the relying party expired the
 user session. To facilitate this, the relying party would have to keep
 some form of secure user session state (unforgeable cookie, etc.) even
-when they consider the user signed-out,\[9\] allowing it to give the
+when they consider the user signed-out, [[9]](#footnote-9) allowing it to give the
 user a more convenient user experience. You, as the relying party, might
 serve a sign-in page like this:
 
 ![Re-sign-in](images/image12.png)
 
 (An alternative UI treatment here could be an
-[<span class="underline">account chooser-style
-UI</span>](https://www.accountchooser.com/learnmore.html), especially
+[account chooser-style
+UI](https://www.accountchooser.com/learnmore.html), especially
 when the relying party allows multiple accounts to be signed-in at the
 same time.)
 
 If the user clicks on “Use a different account”, then you should enter
-an account bootstrap flow as explained above, repeating the steps in
-[<span class="underline">Authenticating the
-User</span>](#authenticating-the-user) and
-[<span class="underline">Opting into FIDO-based
-Reauthentication</span>](#opting-into-fido-based-reauthentication),
+an account bootstrap flow as explained above, repeating the steps in <!-- [Authenticating the
+User](#21-authenticating-the-user) -->
+[Authenticating the
+User](#21-authenticating-the-user) and
+[Opting into FIDO-based
+Reauthentication](#22-opting-into-fido-based-reauthentication),
 presumably with a different account. In this case, you should also give
 the user the ability to completely remove their account from being
 listed on the sign-in page.
@@ -385,12 +389,12 @@ resistant to phishing attacks.
 
 To actually reduce the exposure of your users to certain phishing risks,
 you can offer them the ability to use FIDO-based roaming authenticators
-as 2nd factors when bootstrapping their account.\[10\]
+as 2nd factors when bootstrapping their account. [[10]](#footnote-10)
 
 > **Note:** We <strong><span class="underline">do not recommend</span></strong> 
 > allowing users to register user-verifying platform authenticators as second factors for 
 > account bootstrapping. If you want to give your users the convenience of biometric 
-> sign-in, follow <a href="#opting-into-fido-based-reauthentication"><span class="underline">the
+> sign-in, follow <a href="#22-opting-into-fido-based-reauthentication"><span class="underline">the
 > steps above</span></a> to register a user-verifying platform authenticator as a password
 > replacement for **reauthentication**, **not** as a second factor
 > for account bootstrapping.<br />
@@ -406,7 +410,7 @@ Have your users register their roaming authenticators on a page that
 they normally use for security purposes such as 2FA sign-up, password
 changes, etc. In particular, we do **not** **recommend** in-lining this
 opt-in choice as part of the user’s sign-in flow, *unless* your site
-makes 2FA mandatory\[11\].
+makes 2FA mandatory [[11]](#footnote-11).
 
 Typically, you would have a page like this:
 
@@ -464,10 +468,10 @@ page, where they can deregister individual authenticators.
 
 Once they register a roaming authenticator, users can now secure their
 bootstrap sign-ins by using this authenticator as a 2nd-factor during
-sign-in.\[12\]
+sign-in. [[12]](#footnote-12)
 
 The relying party starts the bootstrap sign-in flow as usual, typically
-by asking the user for their account identifier (username)\[13\]:
+by asking the user for their account identifier (username) [[13]](#footnote-13):
 
 ![Sign-in username challenge](images/image6.png)
 
@@ -511,9 +515,9 @@ like in Chrome on Linux:
 
 Upon touching their authenticator, you will receive a
 PublicKeyCredential object containing a
-[<span class="underline">AuthenticatorAssertionResponse</span>](https://www.w3.org/TR/webauthn/#authenticatorassertionresponse)
+[AuthenticatorAssertionResponse](https://www.w3.org/TR/webauthn/#authenticatorassertionresponse)
 **which you need to successfully
-[<span class="underline">verify</span>](https://www.w3.org/TR/webauthn/#verifying-assertion)**
+[verify](https://www.w3.org/TR/webauthn/#verifying-assertion)**
 before considering the user authenticated and signed-in.
 
 ## 5 User-Verifying Roaming Authenticators (UVRAs)
@@ -539,7 +543,7 @@ users.
 Yet, the user experience is that of a single-step sign-in: the user
 simply uses the authenticator to bootstrap their account on another
 device, without needing to also provide a password or passing other
-login challenges on that device\[14\].
+login challenges on that device [[14]](#footnote-14).
 
 ### 5.1 Registering a UVRA / Opting into FIDO-only Flows
 
@@ -567,7 +571,7 @@ that might look like this:
 When the user clicks on “Register your security key”, you call
 `navigator.credentials.create()`, taking care to specify “cross-platform”
 for the attachment type, requiring user verification, and requiring a
-resident (aka discoverable) key\[15\]. You also want to look up any
+resident (aka discoverable) key [[15]](#footnote-15). You also want to look up any
 existing credential ids for UVRAs already registered for the current
 user (you can ignore credential ids for platform authenticators and 2FA
 authenticators), and specify those in the exclude-list, thus making sure
@@ -759,11 +763,11 @@ authenticator as backup**, but there are a few caveats to consider:
 
   - If a user's *only* registered authenticator is a *platform*
     authenticator that is used ***only*** for
-    [<span class="underline">FIDO-based
-    reauthentication</span>](#performing-fido-based-reauthentication),
+    [FIDO-based
+    reauthentication](#3-performing-fido-based-reauthentication),
     then the user presumably has some other means to perform
-    [<span class="underline">bootstrap
-    sign-ins</span>](#bootstrapping-an-account). Thus, the user does
+    [bootstrap
+    sign-ins](#2-bootstrapping-an-account). Thus, the user does
     not *necessarily* need to register a second authenticator, because
     the user will not be "locked out" of their account if they lose
     access to their platform authenticator. By definition, this
@@ -843,8 +847,8 @@ To achieve this, the relying party will not require user verification or
 a resident/discoverable credential during credential creation. Instead,
 you will set these to best-effort, or “preferred” mode (a feature only
 available in Level 2 of the webauthn specification). Note that you also
-need to set the [<span class="underline">credProps
-extension</span>](https://www.w3.org/TR/webauthn-2/#sctn-authenticator-credential-properties-extension)
+need to set the [credProps
+extension](https://www.w3.org/TR/webauthn-2/#sctn-authenticator-credential-properties-extension)
 parameter to find out whether or not a resident/discoverable credential
 was created.
 
@@ -896,16 +900,18 @@ created, and whether the authenticator response indicates support for
 user verification, the relying party can afterwards let the user know
 what experience they should expect during subsequent account bootstraps,
 for example by telling them that they can use the “Sign in without a
-password” feature mentioned in [<span class="underline">Signing in with
-a UVRA</span>](#signing-in-with-a-uvra).
+password” feature mentioned in [Signing in with
+a UVRA](#53-signing-in-with-a-uvra).
 
-1.  I.e., without any saved user state or credentials, e.g., cookies or
+## 8 Footnotes
+
+1.  <span id="footnote-1"/>I.e., without any saved user state or credentials, e.g., cookies or
     data in local storage containing (at least) the username or other
     information about the user. Typically, account bootstrapping results
     in the *creation* of saved user state on the user's device, enabling
     the user to later return via lower-friction flows.
 
-2.  Not all FIDO authenticators are user verification-capable, though
+2.  <span id="footnote-2"/>Not all FIDO authenticators are user verification-capable, though
     all FIDO authenticators are at least capable of *testing for user
     presence*. The latter is a means of sensing that a user is *at least
     physically present*. For example, the blinking button on many
@@ -919,61 +925,61 @@ a UVRA</span>](#signing-in-with-a-uvra).
     well as single-gesture reauthentication, thus reducing user
     friction.
 
-3.  “Single-step” here refers to the fact that the user has to pass only
+3.  <span id="footnote-3"/>“Single-step” here refers to the fact that the user has to pass only
     a single login challenge, not to the number of authentication
     factors. Single-step bootstrapping can be two-factor authentication,
     e.g., if the user has to confirm sign-in with their biometric
     (something they are) on their phone (something they have).
 
-4.  This combination is mostly applicable in enterprises that require
+4.  <span id="footnote-4"/>This combination is mostly applicable in enterprises that require
     frequent malware-resistant credential refreshes, but is not covered
     in this guide.
 
-5.  This use case is not covered in this guide.
+5.  <span id="footnote-5"/>This use case is not covered in this guide.
 
-6.  Although there are options to skip this step, which themselves use
-    FIDO/webauthn APIs and UVRAs. We’ll discuss those
-    [<span class="underline">below</span>](#signing-in-with-a-uvra).
+6.  <span id="footnote-6"/>Although there are options to skip this step, which themselves use
+    FIDO/webauthn APIs and UVRAs. We’ll discuss those in
+    [Signing-in with a UVRA](53-signing-in-with-a-uvra).
 
-7.  Although there are exceptions: for example, in an enterprise
+7.  <span id="footnote-7"/>Although there are exceptions: for example, in an enterprise
     context, users may not be able to create accounts themselves, and
     instead need to rely on some other process to have the account
     created for them.
 
-8.  We recommend that on this login challenge page, users can’t change
+8.  <span id="footnote-8"/>We recommend that on this login challenge page, users can’t change
     their account identifier. Also, the login challenge should be
     something that an unauthorized user of the device can’t pass.
 
-9.  Note that a relying party *may* choose to treat signing-out as a
+9.  <span id="footnote-9"/>Note that a relying party *may* choose to treat signing-out as a
     comprehensive action and thus delete all references to the user’s
     credential id (if it has any). Such a relying party ought to treat a
     subsequent sign-in like an account bootstrap, and repeat the steps
-    explained above in [<span class="underline">Authenticating the
-    User</span>](#authenticating-the-user) and
-    [<span class="underline">Opting into FIDO-based
-    Reauthentication</span>](#opting-into-fido-based-reauthentication)
+    explained above in [Authenticating the
+    User](#21-authenticating-the-user) and
+    [Opting into FIDO-based
+    Reauthentication](#22-opting-into-fido-based-reauthentication)
     at the time of the next sign-in.
 
-10. We’ll discuss the use of user-verifying roaming authenticators for
-    single-step account bootstrapping below.
+10. <span id="footnote-10"/>We’ll discuss the use of user-verifying roaming authenticators for
+    single-step account bootstrapping in [Section 5](#5-user-verifying-roaming-authenticators-uvras).
 
-11. I.e., where all users need to register some form of 2nd factor
-    during account creation or their first sign-in.
+11. <span id="footnote-11"/>I.e., where all users need to register some form of 2nd factor
+    during account creation or during their first sign-in.
 
-12. We do not recommend that relying parties require a second factor
+12. <span id="footnote-12"/>We do not recommend that relying parties require a second factor
     during reauthentication. Instead, you should see whether the user's
     platform features a user-verifying FIDO platform authenticator, and
     employ it, making reauthentication more user-friendly without
     sacrificing security.
 
-13. There are ways to skip this step, which themselves use FIDO/webauthn
+13. <span id="footnote-13"/>There are ways to skip this step, which themselves use FIDO/webauthn
     APIs. We’ll discuss those
-    [<span class="underline">below</span>](#signing-in-with-a-uvra).
+    [below](53-signing-in-with-a-uvra).
 
-14. Though, depending upon the type of authenticator, they may need to
+14. <span id="footnote-14"/>Though, depending upon the type of authenticator, they may need to
     provide a PIN (which is locally processed by the platform OS and
     authenticator).
 
-15. Historically, we used the term "resident key" to refer to what will
+15. <span id="footnote-15"/>Historically, we used the term "resident key" to refer to what will
     be known as "discoverable credentials" in the upcoming WebAuthn L2
     and CTAP2.1 specs.
