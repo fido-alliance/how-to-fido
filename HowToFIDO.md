@@ -109,7 +109,23 @@ utilize the APIs correctly, e.g., by requesting the appropriate
 transport or attachment type for the particular use case they are
 addressing. If not done correctly, you risk confusing your users, making
 authentication more complicated than necessary for them, or locking them
-out of their account. Below is an overview of the use cases unlocked by
+out of their account. 
+
+### 1.1 Platform Authenticators and Roaming Authenticators
+
+Platform authenticators have a unique issue which needs to be carefully considered when designing the flows and operations. 
+
+**Issue:** Platform authenticators cannot be connected to and used with other devices. Namely, they cannot bootstrap other devices [16].
+
+If a platform authenticator is the only authenticator that is registered and if there are no alternative credentials available for login, e.g., passwords, the user will be ‘locked-out’ from logging in the account if the platform authenticator is lost, stolen or damaged. If this situation happens, you need to invoke an account recovery process which typically causes frictions for users. To avoid the account recovery process, when allowing users to register a platform authenticator, you must be assured that users have alternative login methods such as (i) passwords, or (ii) additional roaming authenticators that have already been registered.  
+
+![user lock out](https://github.com/maxhata/how-to-fido/blob/patch-1/images/image-user-lockout.png)
+
+It should be noted that passwords provided along with a platform authenticator allow anyone who knows the password to login. Therefore, it is vulnerable to phishing attacks even though it is adopting FIDO authenticators. On the other hand, additional roaming authenticators are phishing-resistant unlike passwords.
+
+### 1.2 Use Cases
+
+Below is an overview of the use cases unlocked by
 the different types of authenticators:
 
 
@@ -134,7 +150,7 @@ the different types of authenticators:
 <td>User-verifying</td>
 <td><ul>
 <li>
-<p>convenient <em><strong>reauthentication</strong></em> UX</p>
+<p>convenient <em><strong>reauthentication</strong></em> UX[17]</p>
 </li>
 </ul></td>
 <td><ul>
@@ -983,3 +999,15 @@ a UVRA](#53-signing-in-with-a-uvra).
 15. <span id="footnote-15"/>Historically, we used the term "resident key" to refer to what will
     be known as "discoverable credentials" in the upcoming WebAuthn L2
     and CTAP2.1 specs.
+
+16. This limitation may be solved if CTAP is implemented on the platform 
+    authenticators. CTAP will enable platform authenticators to securely connect
+    to other devices via local transports like BLE and enable bootstrapping the 
+    device. No off-the-shelf solution is available at the time of writing. 
+
+17. Typically, in this scenario, password login needs to be enabled to avoid the
+    ‘locked-out’ situation. Therefore, this model is vulnerable to phishing attacks 
+    as passwords are allowed. On the other hand, if roaming authenticators are 
+    registered in addition to the platform authenticator (instead of passwords), 
+    it is phishing-resistant.
+
