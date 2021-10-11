@@ -246,13 +246,8 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: We recommend that most relying parties operating in the
-> consumer (as opposed to enterprise) space not specify the attestation conveyance 
-> parameter `attestation` (thus defaulting to none), or instead explicitly use the value 
-> `indirect`. This guarantees the most streamlined user experience (platforms are likely 
-> to obtain consent from the user for other types of attestation conveyances, which 
-> likely results in a larger fraction of unsuccessful credential creations due to users 
-> canceling the creation).
+> A note on attestation: Please see [16].
+
 
 Associate the returned public key and credential id with the user
 account. Also, make sure you associate the credential id **with the
@@ -453,11 +448,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: We recommend that most relying parties not specify the attestation 
-> conveyance parameter attestation (thus defaulting to none), or instead explicitly use the value 
-> indirect. This guarantees the most streamlined user experience (platforms are likely to obtain 
-> consent from the user for other types of attestation conveyances, which likely results in a 
-> larger fraction of unsuccessful credential creations due to users canceling the creation).
+> A note on attestation: Please see [16].
 
 It is common practice to let the user name the authenticator (either
 before or after you call `create()`), and to show the user a list of
@@ -607,12 +598,8 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: We recommend that most relying parties not specify the attestation 
-> conveyance parameter `attestation` (thus defaulting to none), or instead explicitly use 
-> the value `indirect`. This guarantees the most streamlined user experience (platforms are 
-> likely to obtain consent from the user for other types of attestation conveyances, which 
-> likely results in a larger fraction of unsuccessful credential creations due to users 
-> canceling the creation).
+> A note on attestation: Please see [16].
+
 
 You should let the user name the authenticator (either before or after
 you call create()), and show the user a list of UVRAs that they have
@@ -687,12 +674,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: We recommend that most relying parties not specify the attestation 
-> conveyance parameter `attestation` (thus defaulting to none), or instead explicitly use the 
-> value `indirect`. This guarantees the most streamlined user experience (platforms are likely 
-> to obtain consent from the user for other types of attestation conveyances, which likely 
-> results in a larger fraction of unsuccessful credential creations due to users canceling the 
-> creation).
+> A note on attestation: Please see [16].
 
 If the transports indicated in the response include "ble" and/or
 "cable", you know that the present device can be used as a UVRA.
@@ -889,11 +871,7 @@ navigator.credentials.create({
 })
 ```
 
-> A note on attestation: We recommend that most relying parties not specify the attestation 
-> conveyance parameter `attestation` ( thus defaulting to none), or instead explicitly use the 
-> value `indirect`. This guarantees the most streamlined user experience (platforms are likely to 
-> obtain consent from the user for other types of attestation conveyances, which likely results in 
-> a larger fraction of unsuccessful credential creations due to users canceling the creation).
+> A note on attestation: Please see [16].
 
 Depending on whether a resident/discoverable credential was in fact
 created, and whether the authenticator response indicates support for
@@ -983,3 +961,26 @@ a UVRA](#53-signing-in-with-a-uvra).
 15. <span id="footnote-15"/>Historically, we used the term "resident key" to refer to what will
     be known as "discoverable credentials" in the upcoming WebAuthn L2
     and CTAP2.1 specs.
+
+
+16.  A note on attestation: Whether or not to specify the attestation 
+     conveyance parameter `attestation`depends on your business priorities.
+     If attestation is not specified, you will not get the AAGUID 
+     (Authenticator Attestation GUID) of the authenticator and you will not
+     know anything about the authenticator you are about to accept for 
+     registration with your services. Knowing AAGUID enables you to find 
+     out the provenance and supported features of the authenticator as well 
+     as if the authenticator is certified by FIDO Alliance from such a source
+     like [FIDO Metadata Service] (https://fidoalliance.org/metadata/). 
+     FIDO Certification assures interoperability as well as levels of security 
+     of authenticators. This will be useful information especially for security 
+     conscious RPs and applications. 
+     If you are not interested in such information of the authenticators at all, 
+     your choice will be not to specify the attestation conveyance parameter 
+     `attestation` (thus defaulting to none), or instead explicitly use the value 
+     `indirect`. This guarantees the most streamlined user experience (platforms 
+     are likely to obtain consent from the user for other types of attestation 
+     conveyances, which likely results in a larger fraction of unsuccessful 
+     credential creations due to users canceling the creation).
+
+
