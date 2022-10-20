@@ -119,7 +119,6 @@ the different types of authenticators:
 <th></th>
 <th></th>
 <th colspan="2">Physical manifestation of the authenticator</th>
-<th></th>
 </tr>
 </thead>
 <tbody>
@@ -142,7 +141,7 @@ the different types of authenticators:
 <p>phishing-resistant 2nd factor</p>
 </li>
 <li>
-<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em> <a href=#footnote-3>[3]</a></p>
+<p>phishing-resistant <em><strong>single-step account bootstrapping</strong></em> <a href="#footnote-3">[3]</a></p>
 </li>
 </ul></td>
 </tr>
@@ -150,7 +149,7 @@ the different types of authenticators:
 <td>Not-user-verifying</td>
 <td><ul>
 <li>
-<p>defense-in-depth against malware <a href=#footnote-4>[4]</a></p>
+<p>defense-in-depth against malware <a href="#footnote-4">[4]</a></p>
 </li>
 </ul></td>
 <td><ul>
@@ -158,7 +157,7 @@ the different types of authenticators:
 <p>phishing-resistant 2nd factor</p>
 </li>
 <li>
-<p>low-security single-step account bootstrapping <a href=#footnote-5>[5]</a></p>
+<p>low-security single-step account bootstrapping <a href="#footnote-5">[5]</a></p>
 </li>
 </ul></td>
 </tr>
